@@ -1534,6 +1534,16 @@ body::before {
 
 }
 
+.item{
+    transition:transform .25s ease, filter .25s ease;
+ }
+
+ .item.active{
+     transform:scale(1.08);
+     z-index:5;
+     filter:brightness(1.08);
+}
+
 </style>
 
 </head>
