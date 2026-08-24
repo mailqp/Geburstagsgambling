@@ -488,61 +488,35 @@ body::before {
 ========================================================= */
 
 .roulette::before,
-.roulette::after {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    bottom: 0;
-
-    width: 320px;
-
-    z-index: 25;
-
-    pointer-events: none;
-
-    backdrop-filter:
-        blur(3px);
-
+.roulette::after{
+    content:"";
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:270px;
+    z-index:25;
+    backdrop-filter:blur(2px);
 }
 
-
-.roulette::before {
-
-    left: 0;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #0b1016 0%,
-            rgba(11,16,22,.95) 30%,
-            rgba(11,16,22,.70) 52%,
-            transparent 100%
-        );
-
+.roulette::before{
+    left:0;
+    background:linear-gradient(
+        90deg,
+        rgba(8,11,15,.92),
+        rgba(8,11,15,.55),
+        transparent
+    );
 }
 
-
-.roulette::after {
-
-    right: 0;
-
-    background:
-
-        linear-gradient(
-            270deg,
-            #0b1016 0%,
-            rgba(11,16,22,.95) 30%,
-            rgba(11,16,22,.70) 52%,
-            transparent 100%
-        );
-
+.roulette::after{
+    right:0;
+    background:linear-gradient(
+        270deg,
+        rgba(8,11,15,.92),
+        rgba(8,11,15,.55),
+        transparent
+    );
 }
-
 
 /* =========================================================
    ITEMS
