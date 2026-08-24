@@ -2459,26 +2459,17 @@ function spin() {
         =================================================
     */
 
-    const roulette =
-        document.querySelector(
-            ".roulette"
-        );
 
 
-    const rouletteCenter =
-        roulette.clientWidth / 2;
-
+    const roulette = document.querySelector(".roulette");
+    const rouletteCenter = roulette.clientWidth / 2;
 
     const winningCenter =
-        winningItem.offsetLeft
-        +
-        winningItem.offsetWidth / 2;
+    winningItem.offsetLeft +
+    winningItem.offsetWidth / 2;
 
+    const finalPosition = rouletteCenter - winningCenter;
 
-    const finalPosition =
-        rouletteCenter
-        -
-        winningCenter;
 
 
     /*
