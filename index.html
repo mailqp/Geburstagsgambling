@@ -1787,6 +1787,7 @@ const ITEM_WIDTH = 165;
 ========================================================= */
 
 let spinning = false;
+let currentTranslate = 0;    
 
 let audioContext = null;
 
@@ -2467,6 +2468,9 @@ function spin(){
     container.style.transition=
         `transform ${duration}ms cubic-bezier(.04,.78,.08,1)`;
 
+    currentTranslate = finalPosition;
+    updateFocus();
+
     container.style.transform=
         `translateX(${finalPosition}px)`;
 
@@ -2519,6 +2523,9 @@ function spin(){
             .classList.add("show");
 
     },duration+200);
+
+    currentTranslate = finalPosition;
+    updateFocus();
 
 }
 
