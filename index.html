@@ -2390,36 +2390,137 @@ function openCase() {
 /* =========================================================
    SPIN
 ========================================================= */
-
-function spin() {
+function updateFocus(){
 
     const container =
-        document.getElementById(
-            "items"
-        );
+        document.getElementById("items");
 
+    const roulette =
+        document.querySelector(".roulette");
+
+    const items =
+        container.querySelectorAll(".item");
+
+    const marker =
+        roulette.clientWidth/2;
+
+    let closest=null;
+    let distance=Infinity;
+
+    items.forEach(item=>{
+
+        const center=
+            item.offsetLeft+
+            item.offsetWidth/2+
+            currentTranslate;
+
+        const d=Math.abs(center-marker);
+
+        item.classList.remove("active");
+
+        if(d<distance){
+            distance=d;
+            closest=item;
+        }
+
+    });
+
+    if(closest)
+        closest.classList.add("active");
+
+}
+
+    
+    
+    
+    
+function spin(){
+
+    const container =
+        document.getElementById("items");
+
+    const roulette =
+        document.querySelector(".roulette");
 
     const allItems =
-        container.querySelectorAll(
-            ".item"
-        );
-
+        container.querySelectorAll(".item");
 
     const winningItem =
         allItems[WINNING_INDEX];
 
+    const rouletteCenter =
+        roulette.clientWidth / 2;
 
-    if (!winningItem) {
+    const winningCenter =
+        winningItem.offsetLeft +
+        winningItem.offsetWidth / 2;
 
-        console.error(
-            "Winning Item fehlt."
-        );
+    const finalPosition =
+        rouletteCenter - winningCenter;
 
-        spinning = false;
+    container.style.transition="none";
+    container.style.transform="translateX(0px)";
+    void container.offsetWidth;
 
-        return;
+    const duration=9000;
+
+    container.style.transition=
+        `transform ${duration}ms cubic-bezier(.04,.78,.08,1)`;
+
+    container.style.transform=
+        `translateX(${finalPosition}px)`;
+
+    let tickCount=0;
+    let lastTick=performance.now();
+
+    function animateTicks(){
+
+        const elapsed=
+            performance.now()-lastTick;
+
+        const progress=
+            Math.min(tickCount/85,1);
+
+        const delay=
+            40+progress*125;
+
+        if(elapsed>=delay){
+
+            tick(
+                Math.max(
+                    .018,
+                    .065-progress*.035
+                )
+            );
+
+            tickCount++;
+            lastTick=performance.now();
+
+        }
+
+        if(tickCount<85)
+            requestAnimationFrame(animateTicks);
 
     }
+
+    animateTicks();
+
+    setTimeout(()=>{
+
+        container.style.transition="none";
+        container.style.transform=
+            `translateX(${finalPosition}px)`;
+
+        victorySound();
+        createParticles();
+
+        document
+            .getElementById("result")
+            .classList.add("show");
+
+    },duration+200);
+
+}
 
 
     /*
