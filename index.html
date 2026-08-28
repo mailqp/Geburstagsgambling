@@ -355,21 +355,6 @@ body::before {
         0 20px 60px
         rgba(0,0,0,.5);
 
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition: opacity 0.6s ease;
-
-}
-
-
-.roulette-frame.show {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
 }
 
 
@@ -1080,7 +1065,6 @@ const resultRarity = document.getElementById('resultRarity');
 const resultImage = document.getElementById('resultImage');
 const resultName = document.getElementById('resultName');
 const resultSkin = document.getElementById('resultSkin');
-const rouletteFrame = document.getElementById('rouletteFrame');
 
 const weapons = [
     { name: 'AK-47', skin: 'Dragon Lore', image: 'ak47.png', rarity: 'MYTHICAL', color: 'gold' },
@@ -1140,17 +1124,11 @@ function showResult(weapon) {
 openBtn.addEventListener('click', () => {
     openBtn.disabled = true;
     caseImg.classList.add('opening');
-    rouletteFrame.classList.add('show');
-
-    setTimeout(() => {
-        caseImg.classList.remove('opening');
-        spin();
-    }, 600);
+    spin();
 });
 
 result.addEventListener('click', () => {
     result.classList.remove('show');
-    rouletteFrame.classList.remove('show');
 });
 
 createItems();
