@@ -1071,6 +1071,13 @@ const weapons = [
     { name: 'M4A4', skin: 'Howl', image: 'm4a4.png', rarity: 'RARE', color: 'red' },
     { name: 'AWP Dragon Lore', skin: 'Dragon Lore', image: 'awp.png', rarity: 'LEGENDARY', color: 'gold' },
     { name: 'Karambit', skin: 'Gamma Doppler', image: 'karambit.png', rarity: 'RARE', color: 'red' },
+    {
+        name: '★ Rare Special Item ★',
+        skin: '',
+        image: 'special.png',
+        rarity: 'RARE SPECIAL',
+        color: 'purple'
+    },
 ];
 
 function createItems() {
@@ -1082,8 +1089,14 @@ function createItems() {
         item.innerHTML = `
             <img src="${weapon.image}" alt="${weapon.name}" class="weapon">
             <div class="item-info">
-                <strong>${weapon.name}</strong>
-                <span>${weapon.skin}</span>
+                <strong>
+                    ${weapon.name}
+                </strong>
+
+                <span>
+                    ${weapon.skin}
+                </span>
+
             </div>
         `;
         itemsContainer.appendChild(item);
