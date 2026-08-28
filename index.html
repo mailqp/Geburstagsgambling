@@ -1385,16 +1385,14 @@ body::before {
 
         </div>
 
-
         <button
             class="inspect"
             id="inspect"
+            onclick="window.open('https://www.example.com', '_blank')"
         >
-
             INSPECT ITEM
-
         </button>
-
+        
 
     </div>
 
@@ -2299,40 +2297,40 @@ function spin() {
 ========================================================= */
 
 document
-    .getElementById(
-        "inspect"
-    )
-    .addEventListener(
-        "click",
-        () => {
+    .getElementById("inspect")
+    .addEventListener("click", () => {
 
-            document
-                .getElementById(
-                    "result"
-                )
-                .classList.remove(
-                    "show"
-                );
+        if (window.innerWidth <= 768) {
 
+            // Handy
+            window.open(
+                "https://steamcommunity.com/profiles/76561199788912708/inventory/#730_16_53443978047",
+                "_blank"
+            );
 
-            setTimeout(
-                () => {
+        } else {
 
-                    document
-                        .getElementById(
-                            "openButton"
-                        )
-                        .disabled =
-                        false;
-
-                },
-                700
+            // PC
+            window.open(
+                "steam://run/730//+csgo_econ_action_preview%204252FD84CBCE85435AC2466287466A4472417ADFDDCEB04102DD402AC1C2C2C24E324A3EB12F60",
+                "_blank"
             );
 
         }
-    );
 
+        document
+            .getElementById("result")
+            .classList.remove("show");
 
+        setTimeout(() => {
+
+            document
+                .getElementById("openButton")
+                .disabled = false;
+
+        }, 700);
+
+    });
 /* =========================================================
    START
 ========================================================= */
