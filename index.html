@@ -998,9 +998,219 @@ body::before {
 
     margin-top: 7px;
 
-    color: #949ba4;
+    color: #b48be1;
 
-    font-size: 13px;
+    font-size: 19px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.result-wear {
+
+    margin-top: 13px;
+
+    color: #697682;
+
+    font-size: 11px;
+
+}
+
+
+.inspect {
+
+    margin-top: 28px;
+
+    padding: 11px 30px;
+
+    border:
+        1px solid
+        #4d5a66;
+
+    background: #151b21;
+
+    color: #dce1e5;
+
+    cursor: pointer;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   FLASH
+========================================================= */
+
+.flash {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: white;
+
+    z-index: 200;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+.flash.active {
+
+    animation:
+        flash
+        .55s
+        ease-out;
+
+}
+
+
+@keyframes flash {
+
+    0% {
+        opacity: .85;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle {
+
+    position: fixed;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #e4ae39;
+
+    z-index: 210;
+
+    pointer-events: none;
+
+    animation:
+        particle
+        1.6s
+        ease-out
+        forwards;
+
+}
+
+
+@keyframes particle {
+
+    from {
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px) {
+
+    .topbar {
+
+        padding: 0 16px;
+
+    }
+
+
+    .top-right {
+
+        display: none;
+
+    }
+
+
+    .main {
+
+        padding-top: 25px;
+
+    }
+
+
+    .case {
+
+        width: 270px;
+
+    }
+
+
+    .item {
+
+        width: 140px;
+
+        min-width: 140px;
+
+    }
+
+
+    .weapon {
+
+        width: 125px;
+
+        height: 105px;
+
+    }
+
+
+    .roulette {
+
+        height: 205px;
+
+    }
+
+
+    .result-image {
+
+        height: 240px;
+
+    }
+
+
+    .result-name {
+
+        font-size: 22px;
+
+    }
 
 }
 
@@ -1008,145 +1218,1132 @@ body::before {
 
 </head>
 
+
 <body>
 
-<div class="topbar">
 
-    <div class="logo">BIRTHDAY <span>CASE</span></div>
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="logo">
+
+        COUNTER<span>STRIKE</span>
+
+    </div>
+
 
     <div class="top-right">
-        <span>BALANCE</span>
+
+        PERSONAL CONTAINER
+
         <div class="avatar"></div>
+
     </div>
 
-</div>
+</header>
 
-<div class="main">
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
 
     <div class="title">
-        <h1>CASE OPENING</h1>
-        <p>ÖFFNE DEINE ERSTEN FÄLLE UND GEWINNE PRÄHISTORISCHE WAFFEN</p>
+
+        <h1>
+            Unlock Container
+        </h1>
+
+
+        <p>
+            Unlock the weapon case with a key.
+        </p>
+
     </div>
+
+
+    <!-- CASE -->
 
     <div class="case-area">
-        <img src="case.png" alt="Case" class="case" id="case">
+
+        <img
+            id="caseImage"
+            class="case"
+            src="case.png"
+            alt="Weapon Case"
+        >
+
     </div>
 
-    <div class="roulette-frame" id="rouletteFrame">
+
+    <!-- ROULETTE -->
+
+    <div class="roulette-frame">
+
         <div class="roulette">
+
             <div class="marker"></div>
-            <div class="items" id="items"></div>
+
+            <div
+                class="items"
+                id="items"
+            ></div>
+
         </div>
+
     </div>
+
+
+    <!-- BUTTON -->
 
     <div class="controls">
-        <button class="open-button" id="openBtn">ÖFFNEN</button>
-        <p class="info">KLICKE AUF DEN KNOPF UM DEIN GLÜCK ZU VERSUCHEN</p>
+
+        <button
+            class="open-button"
+            id="openButton"
+        >
+
+            🔑 &nbsp;
+            UNLOCK CONTAINER
+
+        </button>
+
+
+        <div class="info">
+
+            CONTAINER #728491 · KEY REQUIRED
+
+        </div>
+
     </div>
 
-</div>
+</main>
 
-<div class="result" id="result">
+
+<!-- =====================================================
+     FLASH
+===================================================== -->
+
+<div
+    class="flash"
+    id="flash"
+></div>
+
+
+<!-- =====================================================
+     RESULT
+===================================================== -->
+
+<div
+    class="result"
+    id="result"
+>
+
     <div class="result-content">
-        <div class="result-rarity" id="resultRarity"></div>
-        <img src="" alt="Result" class="result-image" id="resultImage">
-        <div class="result-name" id="resultName"></div>
-        <div class="result-skin" id="resultSkin"></div>
+
+
+        <div class="result-rarity">
+
+            ★ RARE SPECIAL ITEM ★
+
+        </div>
+
+
+        <img
+            class="result-image"
+            src="falchion-freehand.png"
+            alt="Falchion Knife Freehand"
+        >
+
+
+        <div class="result-name">
+
+            <span class="star">
+                ★
+            </span>
+
+            FALCHION KNIFE
+
+        </div>
+
+
+        <div class="result-skin">
+
+            FREEHAND
+
+        </div>
+
+
+        <div class="result-wear">
+
+            Field-Tested
+
+        </div>
+
+        <button
+            class="inspect"
+            id="inspect"
+        >
+            INSPECT ITEM
+        </button>
+        
+
     </div>
+
 </div>
+
 
 <script>
 
-const caseImg = document.getElementById('case');
-const openBtn = document.getElementById('openBtn');
-const itemsContainer = document.getElementById('items');
-const result = document.getElementById('result');
-const resultRarity = document.getElementById('resultRarity');
-const resultImage = document.getElementById('resultImage');
-const resultName = document.getElementById('resultName');
-const resultSkin = document.getElementById('resultSkin');
+/* =========================================================
+   EINSTELLUNGEN
+========================================================= */
 
-const weapons = [
-    { name: 'AK-47', skin: 'Dragon Lore', image: 'ak47.png', rarity: 'MYTHICAL', color: 'gold' },
-    { name: 'M4A4', skin: 'Howl', image: 'm4a4.png', rarity: 'RARE', color: 'red' },
-    { name: 'AWP Dragon Lore', skin: 'Dragon Lore', image: 'awp.png', rarity: 'LEGENDARY', color: 'gold' },
-    { name: 'Karambit', skin: 'Gamma Doppler', image: 'karambit.png', rarity: 'RARE', color: 'red' },
+const WINNING_INDEX = 110;
+
+const TOTAL_ITEMS = 180;
+
+const ITEM_WIDTH = 165;
+
+const ITEM_GAP = 3;
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+let spinning = false;
+
+let audioContext = null;
+
+
+/* =========================================================
+   SKINS
+========================================================= */
+
+const skins = [
+
     {
-        name: '★ Rare Special Item ★',
-        skin: '',
-        image: 'special.png',
-        rarity: 'RARE SPECIAL',
-        color: 'purple'
+        rarity: "blue",
+        name: "MP9 | Food Chain",
+        image: "mp9-food-chain.png"
     },
+
+    {
+        rarity: "blue",
+        name: "MAC-10 | Disco Tech",
+        image: "mac10-discotech.png"
+    },
+
+    {
+        rarity: "blue",
+        name: "P250 | Cyber Shell",
+        image: "p250-cyber-shell.png"
+    },
+
+    {
+        rarity: "blue",
+        name: "Galil AR | Chatterbox",
+        image: "galil-chatterbox.png"
+    },
+
+    {
+        rarity: "blue",
+        name: "FAMAS | Meow 36",
+        image: "famas-meow36.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "USP-S | Printstream",
+        image: "usp-s-printstream.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "Glock-18 | Vogue",
+        image: "glock-vogue.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "Desert Eagle | Printstream",
+        image: "deagle-printstream.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "M4A4 | Printstream",
+        image: "m4a4-printstream.png"
+    },
+
+    {
+        rarity: "pink",
+        name: "AK-47 | Redline",
+        image: "ak47-redline.png"
+    },
+
+    {
+        rarity: "pink",
+        name: "AWP | Asiimov",
+        image: "awp-asiimov.png"
+    },
+
+    {
+        rarity: "pink",
+        name: "M4A1-S | Printstream",
+        image: "m4a1s-printstream.png"
+    },
+
+    {
+        rarity: "red",
+        name: "AK-47 | The Empress",
+        image: "ak47-empress.png"
+    },
+
+    {
+        rarity: "red",
+        name: "M4A1-S | Player Two",
+        image: "m4a1s-player2.png"
+    }
+
 ];
 
-function createItems() {
-    itemsContainer.innerHTML = '';
-    for (let i = 0; i < 30; i++) {
-        const weapon = weapons[i % weapons.length];
-        const item = document.createElement('div');
-        item.className = `item ${weapon.color}`;
-        item.innerHTML = `
-            <img src="${weapon.image}" alt="${weapon.name}" class="weapon">
-            <div class="item-info">
-                <strong>
-                    ${weapon.name}
-                </strong>
 
-                <span>
-                    ${weapon.skin}
-                </span>
+/* =========================================================
+   ZUFÄLLIGEN SKIN AUSWÄHLEN
+========================================================= */
 
-            </div>
-        `;
-        itemsContainer.appendChild(item);
-    }
+function randomSkin() {
+
+    const index =
+        Math.floor(
+            Math.random()
+            *
+            skins.length
+        );
+
+    return skins[index];
+
 }
+
+
+/* =========================================================
+   AUDIO INITIALISIEREN
+========================================================= */
+
+function initAudio() {
+
+    if (!audioContext) {
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+    }
+
+
+    if (
+        audioContext.state ===
+        "suspended"
+    ) {
+
+        audioContext.resume();
+
+    }
+
+}
+
+
+/* =========================================================
+   TICK SOUND
+========================================================= */
+
+function tick(volume = 0.04) {
+
+    if (!audioContext)
+        return;
+
+
+    const oscillator =
+        audioContext.createOscillator();
+
+
+    const gain =
+        audioContext.createGain();
+
+
+    oscillator.type =
+        "square";
+
+
+    oscillator.frequency.value =
+        220 +
+        Math.random() * 80;
+
+
+    gain.gain.setValueAtTime(
+        volume,
+        audioContext.currentTime
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.045
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audioContext.destination
+    );
+
+
+    oscillator.start();
+
+
+    oscillator.stop(
+        audioContext.currentTime
+        +
+        0.05
+    );
+
+}
+
+
+/* =========================================================
+   SIEG SOUND
+========================================================= */
+
+function victorySound() {
+
+    if (!audioContext)
+        return;
+
+
+    const notes = [
+        392,
+        494,
+        587,
+        784,
+        988
+    ];
+
+
+    notes.forEach(
+        (frequency, index) => {
+
+            const osc =
+                audioContext
+                    .createOscillator();
+
+
+            const gain =
+                audioContext
+                    .createGain();
+
+
+            const start =
+                audioContext.currentTime
+                +
+                index * 0.11;
+
+
+            osc.type =
+                "sine";
+
+
+            osc.frequency.value =
+                frequency;
+
+
+            gain.gain.setValueAtTime(
+                0,
+                start
+            );
+
+
+            gain.gain.linearRampToValueAtTime(
+                0.14,
+                start + 0.03
+            );
+
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                start + 0.65
+            );
+
+
+            osc.connect(gain);
+
+            gain.connect(
+                audioContext.destination
+            );
+
+
+            osc.start(start);
+
+            osc.stop(
+                start + 0.7
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NORMALES ITEM ERSTELLEN
+========================================================= */
+
+function createItem(skin) {
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+
+    item.className =
+        "item " +
+        skin.rarity;
+
+
+    item.innerHTML = `
+
+        <img
+            class="weapon"
+            src="${skin.image}"
+            alt="${skin.name}"
+        >
+
+        <div class="item-info">
+
+            <strong>
+                ${skin.name}
+            </strong>
+
+            <span>
+                ${
+                    skin.rarity === "blue"
+                    ? "Mil-Spec Grade"
+                    :
+                    skin.rarity === "purple"
+                    ? "Restricted"
+                    :
+                    skin.rarity === "pink"
+                    ? "Classified"
+                    :
+                    "Covert"
+                }
+            </span>
+
+        </div>
+
+    `;
+
+
+    return item;
+
+}
+
+
+/* =========================================================
+   KNIFE ERSTELLEN
+========================================================= */
+
+function createKnife() {
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+
+    item.className =
+        "item gold";
+
+
+    item.innerHTML = `
+
+        <img
+            class="weapon"
+            src="rare_special_item.png"
+            alt="Rare Special Item"
+        >
+
+        <div class="item-info">
+
+            <strong>
+                ★ Rare Special Item ★
+            </strong>
+
+        </div>
+
+    `;
+
+
+    return item;
+
+}
+
+
+/* =========================================================
+   ROULETTE ERSTELLEN
+========================================================= */
+
+function buildRoulette() {
+
+    const container =
+        document.getElementById(
+            "items"
+        );
+
+
+    container.innerHTML =
+        "";
+
+
+    for (
+        let i = 0;
+        i < TOTAL_ITEMS;
+        i++
+    ) {
+
+
+        if (
+            i === WINNING_INDEX
+        ) {
+
+            container.appendChild(
+                createKnife()
+            );
+
+        }
+
+        else {
+
+            container.appendChild(
+                createItem(
+                    randomSkin()
+                )
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+function createParticles() {
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "particle";
+
+
+        particle.style.left =
+            (
+                window.innerWidth / 2
+            )
+            +
+            "px";
+
+
+        particle.style.top =
+            (
+                window.innerHeight / 2
+            )
+            +
+            "px";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                (Math.random() - .5)
+                *
+                1000
+            )
+            +
+            "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                (Math.random() - .5)
+                *
+                700
+            )
+            +
+            "px"
+        );
+
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            () => {
+
+                particle.remove();
+
+            },
+            1700
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CASE ÖFFNEN
+========================================================= */
+
+function openCase() {
+
+    if (spinning)
+        return;
+
+
+    spinning = true;
+
+
+    initAudio();
+
+
+    const button =
+        document.getElementById(
+            "openButton"
+        );
+
+
+    const caseImage =
+        document.getElementById(
+            "caseImage"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    caseImage.classList.add(
+        "opening"
+    );
+
+
+    setTimeout(
+        () => {
+
+            caseImage.classList.remove(
+                "opening"
+            );
+
+
+            spin();
+
+        },
+        850
+    );
+
+}
+
+
+/* =========================================================
+   SPIN
+========================================================= */
 
 function spin() {
-    const randomIndex = Math.floor(Math.random() * weapons.length);
-    const selectedWeapon = weapons[randomIndex];
 
-    const itemWidth = 165 + 3;
-    const offset = randomIndex * itemWidth + (itemWidth / 2);
-    const distance = 30 * itemWidth;
-    const finalPosition = distance - offset;
+    const container =
+        document.getElementById(
+            "items"
+        );
 
-    itemsContainer.style.transition = 'none';
-    itemsContainer.style.transform = 'translateX(0)';
 
-    setTimeout(() => {
-        itemsContainer.style.transition = 'transform 4s cubic-bezier(.17,.67,.12,.98)';
-        itemsContainer.style.transform = `translateX(-${finalPosition}px)`;
-    }, 50);
+    /*
+        Das Knife anhand des echten
+        DOM-Elements finden.
+    */
 
-    setTimeout(() => {
-        showResult(selectedWeapon);
-    }, 4000);
+    const allItems =
+        container.querySelectorAll(
+            ".item"
+        );
+
+
+    const winningItem =
+        allItems[WINNING_INDEX];
+
+
+    if (!winningItem) {
+
+        console.error(
+            "Knife konnte nicht gefunden werden."
+        );
+
+        spinning = false;
+
+        return;
+
+    }
+
+
+    /*
+        Aktuelle Position zurücksetzen.
+    */
+
+    container.style.transition =
+        "none";
+
+
+    container.style.transform =
+        "translateX(0px)";
+
+
+    /*
+        Browser zwingt zur Neuberechnung.
+    */
+
+    void container.offsetWidth;
+
+
+    /*
+        -------------------------------------------------
+        EXAKTE POSITION
+        -------------------------------------------------
+
+        Das Roulette beginnt bei left:50%.
+
+        offsetLeft gibt die tatsächliche Position
+        des Knife-Items innerhalb des Streifens an.
+
+        Wir verschieben den Streifen um exakt
+        diese Position plus die halbe Itembreite.
+    */
+
+
+    const winningCenter =
+        winningItem.offsetLeft
+        +
+        winningItem.offsetWidth / 2;
+
+
+    /*
+        Jetzt wird die Mitte des Knife-Items
+        genau auf die linke Kante des Containers
+        gelegt.
+
+        Da der Container bei 50% beginnt,
+        landet das Knife exakt in der Bildschirmmitte.
+    */
+
+    const finalPosition =
+        -winningCenter;
+
+
+    /*
+        -------------------------------------------------
+        WICHTIG:
+        Wir wollen trotzdem viele Skins
+        vorbeilaufen lassen.
+        -------------------------------------------------
+
+        Deshalb starten wir den Streifen
+        zunächst weit rechts und animieren
+        bis zur berechneten Endposition.
+    */
+
+
+    const startPosition =
+        0;
+
+
+    container.style.transform =
+        `translateX(${startPosition}px)`;
+
+
+    void container.offsetWidth;
+
+
+    /*
+        Animation
+    */
+
+    const duration =
+        9000;
+
+
+    container.style.transition =
+        `
+        transform
+        ${duration}ms
+        cubic-bezier(
+            0.04,
+            0.78,
+            0.08,
+            1
+        )
+        `;
+
+
+    container.style.transform =
+        `translateX(${finalPosition}px)`;
+
+
+    /*
+        -------------------------------------------------
+        TICK SOUNDS
+        -------------------------------------------------
+    */
+
+    let tickCount = 0;
+
+    let lastTick =
+        performance.now();
+
+
+    function animateTicks() {
+
+        if (!spinning)
+            return;
+
+
+        const elapsed =
+            performance.now()
+            -
+            lastTick;
+
+
+        const progress =
+            Math.min(
+                tickCount / 85,
+                1
+            );
+
+
+        const delay =
+            40
+            +
+            progress * 125;
+
+
+        if (
+            elapsed >= delay
+        ) {
+
+            tick(
+                Math.max(
+                    .018,
+                    .065
+                    -
+                    progress * .035
+                )
+            );
+
+
+            tickCount++;
+
+
+            lastTick =
+                performance.now();
+
+        }
+
+
+        if (
+            tickCount < 85
+        ) {
+
+            requestAnimationFrame(
+                animateTicks
+            );
+
+        }
+
+    }
+
+
+    animateTicks();
+
+
+    /*
+        -------------------------------------------------
+        ANIMATION FERTIG
+        -------------------------------------------------
+    */
+
+    setTimeout(
+        () => {
+
+            /*
+                Position noch einmal exakt setzen.
+            */
+
+            container.style.transition =
+                "none";
+
+
+            container.style.transform =
+                `translateX(${finalPosition}px)`;
+
+
+            /*
+                Sieg-Sound
+            */
+
+            victorySound();
+
+
+            /*
+                Flash
+            */
+
+            const flash =
+                document.getElementById(
+                    "flash"
+                );
+
+
+            flash.classList.remove(
+                "active"
+            );
+
+
+            void flash.offsetWidth;
+
+
+            flash.classList.add(
+                "active"
+            );
+
+
+            /*
+                Partikel
+            */
+
+            createParticles();
+
+
+            /*
+                Ergebnis
+            */
+
+            setTimeout(
+                () => {
+
+                    document
+                        .getElementById(
+                            "result"
+                        )
+                        .classList.add(
+                            "show"
+                        );
+
+                },
+                350
+            );
+
+
+            spinning = false;
+
+        },
+        duration + 200
+    );
+
 }
 
-function showResult(weapon) {
-    resultRarity.textContent = weapon.rarity;
-    resultImage.src = weapon.image;
-    resultName.innerHTML = weapon.name + ' <span class="star">★</span>';
-    resultSkin.textContent = weapon.skin;
-    result.classList.add('show');
-    openBtn.disabled = false;
-}
 
-openBtn.addEventListener('click', () => {
-    openBtn.disabled = true;
-    caseImg.classList.add('opening');
-    spin();
-});
+/* =========================================================
+   INSPECT BUTTON
+========================================================= */
 
-result.addEventListener('click', () => {
-    result.classList.remove('show');
-});
+document
+    .getElementById("inspect")
+    .addEventListener("click", () => {
 
-createItems();
+        if (window.innerWidth <= 768) {
+
+            // Handy
+            window.open(
+                "https://steamcommunity.com/profiles/76561199788912708/inventory/#730_16_53443978047",
+                "_blank"
+            );
+
+        } else {
+
+            // PC
+            window.open(
+                "steam://run/730//+csgo_econ_action_preview%204252FD84CBCE85435AC2466287466A4472417ADFDDCEB04102DD402AC1C2C2C24E324A3EB12F60",
+                "_blank"
+            );
+
+        }
+
+        document
+            .getElementById("result")
+            .classList.remove("show");
+
+        setTimeout(() => {
+
+            document
+                .getElementById("openButton")
+                .disabled = false;
+
+        }, 700);
+
+    });
+/* =========================================================
+   START
+========================================================= */
+
+buildRoulette();
+
+
+document
+    .getElementById(
+        "openButton"
+    )
+    .addEventListener(
+        "click",
+        openCase
+    );
 
 </script>
+
 
 </body>
 
