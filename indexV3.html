@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Birthday Case Opening</title>
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% -20%,
+            rgba(65, 88, 112, .30),
+            transparent 55%
+        ),
+
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(0, 0, 0, .85),
+            transparent 60%
+        ),
+
+        #080b0f;
+
+    color: #e7ebef;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .16;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 42px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(20,27,35,.98),
+            rgba(9,13,18,.98)
+        );
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.06);
+
+    box-shadow:
+        0 10px 40px
+        rgba(0,0,0,.45);
+
+    position: relative;
+
+    z-index: 10;
+
+}
+
+
+.logo {
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+.logo span {
+    color: #65a4d8;
+}
+
+
+.top-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #75818d;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+}
+
+
+.avatar {
+
+    width: 31px;
+
+    height: 31px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #304253,
+            #121920
+        );
+
+    border:
+        1px solid
+        #465767;
+
+    border-radius: 3px;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+
+    width:
+        min(1350px, 94vw);
+
+    margin: 0 auto;
+
+    padding-top: 45px;
+
+    padding-bottom: 80px;
+
+}
+
+
+.title {
+
+    text-align: center;
+
+    margin-bottom: 34px;
+
+}
+
+
+.title h1 {
+
+    font-size: 27px;
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+.title p {
+
+    margin-top: 9px;
+
+    color: #697681;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   CASE
+========================================================= */
+
+.case-area {
+
+    height: 220px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.case {
+
+    width: 330px;
+
+    height: 190px;
+
+    object-fit: contain;
+
+    filter:
+
+        drop-shadow(
+            0 30px 35px
+            rgba(0,0,0,.65)
+        );
+
+    transition:
+        transform .3s ease;
+
+}
+
+
+.case:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.015);
+
+}
+
+
+.case.opening {
+
+    animation:
+        shake
+        .09s
+        infinite
+        alternate;
+
+}
+
+
+@keyframes shake {
+
+    from {
+
+        transform:
+            translateX(-3px)
+            rotate(-.7deg);
+
+    }
+
+    to {
+
+        transform:
+            translateX(3px)
+            rotate(.7deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   ROULETTE FRAME
+========================================================= */
+
+.roulette-frame {
+
+    position: relative;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #141c24,
+            #0b1016
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    padding: 8px;
+
+    box-shadow:
+
+        inset
+        0 1px
+        rgba(255,255,255,.05),
+
+        0 20px 60px
+        rgba(0,0,0,.5);
+
+}
+
+
+/* =========================================================
+   ROULETTE
+========================================================= */
+
+.roulette {
+
+    height: 225px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.018),
+            rgba(0,0,0,.32)
+        );
+
+}
+
+
+/* =========================================================
+   SIDE FADES
+========================================================= */
+
+.roulette::before,
+.roulette::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 260px;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+}
+
+
+.roulette::before {
+
+    left: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #0b1016 0%,
+            rgba(11,16,22,.94) 30%,
+            transparent 100%
+        );
+
+}
+
+
+.roulette::after {
+
+    right: 0;
+
+    background:
+
+        linear-gradient(
+            270deg,
+            #0b1016 0%,
+            rgba(11,16,22,.94) 30%,
+            transparent 100%
+        );
+
+}
+
+
+/* =========================================================
+   CENTER MARKER
+========================================================= */
+
+.marker {
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    left: 50%;
+
+    width: 2px;
+
+    transform:
+        translateX(-50%);
+
+    background: #ffffff;
+
+    z-index: 40;
+
+    box-shadow:
+
+        0 0 8px white,
+
+        0 0 18px
+        rgba(255,255,255,.45);
+
+}
+
+
+.marker::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    border-left:
+        8px solid transparent;
+
+    border-right:
+        8px solid transparent;
+
+    border-top:
+        12px solid white;
+
+}
+
+
+.marker::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(180deg);
+
+    border-left:
+        8px solid transparent;
+
+    border-right:
+        8px solid transparent;
+
+    border-top:
+        12px solid white;
+
+}
+
+
+/* =========================================================
+   ITEMS
+========================================================= */
+
+.items {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 3px;
+
+    will-change: transform;
+
+}
+
+
+/* =========================================================
+   ITEM
+========================================================= */
+
+.item {
+
+    width: 165px;
+
+    min-width: 165px;
+
+    height: 194px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #19222b,
+            #0c1218
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.055);
+
+    box-shadow:
+
+        inset
+        0 0 30px
+        rgba(0,0,0,.25);
+
+}
+
+
+.item::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 3px;
+
+}
+
+
+.blue::before {
+    background: #4b69ff;
+}
+
+
+.purple::before {
+    background: #8847ff;
+}
+
+
+.pink::before {
+    background: #d32ce6;
+}
+
+
+.red::before {
+    background: #eb4b4b;
+}
+
+
+.gold::before {
+    background: #e4ae39;
+}
+
+
+/* =========================================================
+   WEAPON
+========================================================= */
+
+.weapon {
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 120px;
+
+    object-fit: contain;
+
+    left: 50%;
+
+    top: 47%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    filter:
+
+        drop-shadow(
+            0 8px 9px
+            rgba(0,0,0,.65)
+        );
+
+    user-select: none;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   ITEM TEXT
+========================================================= */
+
+.item-info {
+
+    position: absolute;
+
+    left: 10px;
+
+    bottom: 10px;
+
+    z-index: 5;
+
+    line-height: 1.15;
+
+}
+
+
+.item-info strong {
+
+    display: block;
+
+    color: #dce1e5;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+}
+
+
+.item-info span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #707c88;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   GOLD
+========================================================= */
+
+.gold {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(228,174,57,.12),
+            transparent 65%
+        ),
+
+        linear-gradient(
+            145deg,
+            #1c1b18,
+            #0b0d0f
+        );
+
+    box-shadow:
+
+        inset
+        0 0 45px
+        rgba(228,174,57,.08);
+
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.controls {
+
+    text-align: center;
+
+    margin-top: 26px;
+
+}
+
+
+.open-button {
+
+    min-width: 245px;
+
+    padding: 15px 30px;
+
+    border:
+        1px solid
+        #526b81;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #2b4052,
+            #172530
+        );
+
+    color: #edf1f4;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        inset
+        0 1px
+        rgba(255,255,255,.1),
+
+        0 8px 25px
+        rgba(0,0,0,.4);
+
+    transition: .15s;
+
+}
+
+
+.open-button:hover {
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #355168,
+            #1c2c3a
+        );
+
+}
+
+
+.open-button:disabled {
+
+    opacity: .45;
+
+    cursor: default;
+
+}
+
+
+.info {
+
+    margin-top: 12px;
+
+    color: #5e6a76;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+.result {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(228,174,57,.16),
+            transparent 30%
+        ),
+
+        rgba(4,6,8,.97);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .7s;
+
+}
+
+
+.result.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+}
+
+
+.result-content {
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        scale(.7)
+        translateY(25px);
+
+    transition:
+
+        1s cubic-bezier(
+            .16,
+            1,
+            .3,
+            1
+        );
+
+}
+
+
+.result.show
+.result-content {
+
+    opacity: 1;
+
+    transform:
+        scale(1)
+        translateY(0);
+
+}
+
+
+.result-rarity {
+
+    color: #e1ad3c;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.result-image {
+
+    width:
+        min(620px, 90vw);
+
+    height: 350px;
+
+    object-fit: contain;
+
+    filter:
+
+        drop-shadow(
+            0 0 20px
+            rgba(140,70,255,.4)
+        )
+
+        drop-shadow(
+            0 30px 35px
+            rgba(0,0,0,.85)
+        );
+
+    animation:
+
+        floatKnife
+        3.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes floatKnife {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-1deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-9px)
+            rotate(1deg);
+
+    }
+
+}
+
+
+.result-name {
+
+    font-size: 28px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+}
+
+
+.result-name .star {
+
+    color: #e1ad3c;
+
+}
+
+
+.result-skin {
+
+    margin-top: 7px;
+
+    color: #b48be1;
+
+    font-size: 19px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.result-wear {
+
+    margin-top: 13px;
+
+    color: #697682;
+
+    font-size: 11px;
+
+}
+
+
+.inspect {
+
+    margin-top: 28px;
+
+    padding: 11px 30px;
+
+    border:
+        1px solid
+        #4d5a66;
+
+    background: #151b21;
+
+    color: #dce1e5;
+
+    cursor: pointer;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================================
+   FLASH
+========================================================= */
+
+.flash {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: white;
+
+    z-index: 200;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+.flash.active {
+
+    animation:
+        flash
+        .55s
+        ease-out;
+
+}
+
+
+@keyframes flash {
+
+    0% {
+        opacity: .85;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle {
+
+    position: fixed;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #e4ae39;
+
+    z-index: 210;
+
+    pointer-events: none;
+
+    animation:
+        particle
+        1.6s
+        ease-out
+        forwards;
+
+}
+
+
+@keyframes particle {
+
+    from {
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+    to {
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px) {
+
+    .topbar {
+
+        padding: 0 16px;
+
+    }
+
+
+    .top-right {
+
+        display: none;
+
+    }
+
+
+    .main {
+
+        padding-top: 25px;
+
+    }
+
+
+    .case {
+
+        width: 270px;
+
+    }
+
+
+    .item {
+
+        width: 140px;
+
+        min-width: 140px;
+
+    }
+
+
+    .weapon {
+
+        width: 125px;
+
+        height: 105px;
+
+    }
+
+
+    .roulette {
+
+        height: 205px;
+
+    }
+
+
+    .result-image {
+
+        height: 240px;
+
+    }
+
+
+    .result-name {
+
+        font-size: 22px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="logo">
+
+        COUNTER<span>STRIKE</span>
+
+    </div>
+
+
+    <div class="top-right">
+
+        PERSONAL CONTAINER
+
+        <div class="avatar"></div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+    <div class="title">
+
+        <h1>
+            Unlock Container
+        </h1>
+
+
+        <p>
+            Unlock the weapon case with a key.
+        </p>
+
+    </div>
+
+
+    <!-- CASE -->
+
+    <div class="case-area">
+
+        <img
+            id="caseImage"
+            class="case"
+            src="case.png"
+            alt="Weapon Case"
+        >
+
+    </div>
+
+
+    <!-- ROULETTE -->
+
+    <div class="roulette-frame">
+
+        <div class="roulette">
+
+            <div class="marker"></div>
+
+            <div
+                class="items"
+                id="items"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BUTTON -->
+
+    <div class="controls">
+
+        <button
+            class="open-button"
+            id="openButton"
+        >
+
+            🔑 &nbsp;
+            UNLOCK CONTAINER
+
+        </button>
+
+
+        <div class="info">
+
+            CONTAINER #728491 · KEY REQUIRED
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     FLASH
+===================================================== -->
+
+<div
+    class="flash"
+    id="flash"
+></div>
+
+
+<!-- =====================================================
+     RESULT
+===================================================== -->
+
+<div
+    class="result"
+    id="result"
+>
+
+    <div class="result-content">
+
+
+        <div class="result-rarity">
+
+            ★ RARE SPECIAL ITEM ★
+
+        </div>
+
+
+        <img
+            class="result-image"
+            src="skins/falchion-freehand.png"
+            alt="Falchion Knife Freehand"
+        >
+
+
+        <div class="result-name">
+
+            <span class="star">
+                ★
+            </span>
+
+            FALCHION KNIFE
+
+        </div>
+
+
+        <div class="result-skin">
+
+            FREEHAND
+
+        </div>
+
+
+        <div class="result-wear">
+
+            Field-Tested
+
+        </div>
+
+
+        <button
+            class="inspect"
+            id="inspect"
+        >
+
+            INSPECT ITEM
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   EINSTELLUNGEN
+========================================================= */
+
+const WINNING_INDEX = 110;
+
+const TOTAL_ITEMS = 180;
+
+const ITEM_WIDTH = 165;
+
+const ITEM_GAP = 3;
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+let spinning = false;
+
+let audioContext = null;
+
+
+/* =========================================================
+   SKINS
+========================================================= */
+
+const skins = [
+
+    {
+        rarity: "blue",
+        name: "MP9 | Food Chain",
+        image: "skins/mp9-food-chain.png"
+    },
+
+    {
+        rarity: "blue",
+        name: "MAC-10 | Disco Tech",
+        image: "skins/mac10-discotech.png"
+    },
+
+    {
+        rarity: "blue",
+        name: "P250 | Cyber Shell",
+        image: "skins/p250-cyber-shell.png"
+    },
+
+    {
+        rarity: "blue",
+        name: "Galil AR | Chatterbox",
+        image: "skins/galil-chatterbox.png"
+    },
+
+    {
+        rarity: "blue",
+        name: "FAMAS | Meow 36",
+        image: "skins/famas-meow36.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "USP-S | Printstream",
+        image: "skins/usp-s-printstream.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "Glock-18 | Vogue",
+        image: "skins/glock-vogue.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "Desert Eagle | Printstream",
+        image: "skins/deagle-printstream.png"
+    },
+
+    {
+        rarity: "purple",
+        name: "M4A4 | Printstream",
+        image: "skins/m4a4-printstream.png"
+    },
+
+    {
+        rarity: "pink",
+        name: "AK-47 | Redline",
+        image: "skins/ak47-redline.png"
+    },
+
+    {
+        rarity: "pink",
+        name: "AWP | Asiimov",
+        image: "skins/awp-asiimov.png"
+    },
+
+    {
+        rarity: "pink",
+        name: "M4A1-S | Printstream",
+        image: "skins/m4a1s-printstream.png"
+    },
+
+    {
+        rarity: "red",
+        name: "AK-47 | The Empress",
+        image: "skins/ak47-empress.png"
+    },
+
+    {
+        rarity: "red",
+        name: "M4A1-S | Player Two",
+        image: "skins/m4a1s-player2.png"
+    }
+
+];
+
+
+/* =========================================================
+   ZUFÄLLIGEN SKIN AUSWÄHLEN
+========================================================= */
+
+function randomSkin() {
+
+    const index =
+        Math.floor(
+            Math.random()
+            *
+            skins.length
+        );
+
+    return skins[index];
+
+}
+
+
+/* =========================================================
+   AUDIO INITIALISIEREN
+========================================================= */
+
+function initAudio() {
+
+    if (!audioContext) {
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+    }
+
+
+    if (
+        audioContext.state ===
+        "suspended"
+    ) {
+
+        audioContext.resume();
+
+    }
+
+}
+
+
+/* =========================================================
+   TICK SOUND
+========================================================= */
+
+function tick(volume = 0.04) {
+
+    if (!audioContext)
+        return;
+
+
+    const oscillator =
+        audioContext.createOscillator();
+
+
+    const gain =
+        audioContext.createGain();
+
+
+    oscillator.type =
+        "square";
+
+
+    oscillator.frequency.value =
+        220 +
+        Math.random() * 80;
+
+
+    gain.gain.setValueAtTime(
+        volume,
+        audioContext.currentTime
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.045
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audioContext.destination
+    );
+
+
+    oscillator.start();
+
+
+    oscillator.stop(
+        audioContext.currentTime
+        +
+        0.05
+    );
+
+}
+
+
+/* =========================================================
+   SIEG SOUND
+========================================================= */
+
+function victorySound() {
+
+    if (!audioContext)
+        return;
+
+
+    const notes = [
+        392,
+        494,
+        587,
+        784,
+        988
+    ];
+
+
+    notes.forEach(
+        (frequency, index) => {
+
+            const osc =
+                audioContext
+                    .createOscillator();
+
+
+            const gain =
+                audioContext
+                    .createGain();
+
+
+            const start =
+                audioContext.currentTime
+                +
+                index * 0.11;
+
+
+            osc.type =
+                "sine";
+
+
+            osc.frequency.value =
+                frequency;
+
+
+            gain.gain.setValueAtTime(
+                0,
+                start
+            );
+
+
+            gain.gain.linearRampToValueAtTime(
+                0.14,
+                start + 0.03
+            );
+
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                start + 0.65
+            );
+
+
+            osc.connect(gain);
+
+            gain.connect(
+                audioContext.destination
+            );
+
+
+            osc.start(start);
+
+            osc.stop(
+                start + 0.7
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NORMALES ITEM ERSTELLEN
+========================================================= */
+
+function createItem(skin) {
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+
+    item.className =
+        "item " +
+        skin.rarity;
+
+
+    item.innerHTML = `
+
+        <img
+            class="weapon"
+            src="${skin.image}"
+            alt="${skin.name}"
+        >
+
+        <div class="item-info">
+
+            <strong>
+                ${skin.name}
+            </strong>
+
+            <span>
+                ${
+                    skin.rarity === "blue"
+                    ? "Mil-Spec Grade"
+                    :
+                    skin.rarity === "purple"
+                    ? "Restricted"
+                    :
+                    skin.rarity === "pink"
+                    ? "Classified"
+                    :
+                    "Covert"
+                }
+            </span>
+
+        </div>
+
+    `;
+
+
+    return item;
+
+}
+
+
+/* =========================================================
+   KNIFE ERSTELLEN
+========================================================= */
+
+function createKnife() {
+
+    const item =
+        document.createElement(
+            "div"
+        );
+
+
+    item.className =
+        "item gold";
+
+
+    item.innerHTML = `
+
+        <img
+            class="weapon"
+            src="skins/falchion-freehand.png"
+            alt="Falchion Knife Freehand"
+        >
+
+        <div class="item-info">
+
+            <strong>
+                ★ Falchion Knife
+            </strong>
+
+            <span>
+                Rare Special Item
+            </span>
+
+        </div>
+
+    `;
+
+
+    return item;
+
+}
+
+
+/* =========================================================
+   ROULETTE ERSTELLEN
+========================================================= */
+
+function buildRoulette() {
+
+    const container =
+        document.getElementById(
+            "items"
+        );
+
+
+    container.innerHTML =
+        "";
+
+
+    for (
+        let i = 0;
+        i < TOTAL_ITEMS;
+        i++
+    ) {
+
+
+        if (
+            i === WINNING_INDEX
+        ) {
+
+            container.appendChild(
+                createKnife()
+            );
+
+        }
+
+        else {
+
+            container.appendChild(
+                createItem(
+                    randomSkin()
+                )
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+function createParticles() {
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "particle";
+
+
+        particle.style.left =
+            (
+                window.innerWidth / 2
+            )
+            +
+            "px";
+
+
+        particle.style.top =
+            (
+                window.innerHeight / 2
+            )
+            +
+            "px";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                (Math.random() - .5)
+                *
+                1000
+            )
+            +
+            "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                (Math.random() - .5)
+                *
+                700
+            )
+            +
+            "px"
+        );
+
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            () => {
+
+                particle.remove();
+
+            },
+            1700
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CASE ÖFFNEN
+========================================================= */
+
+function openCase() {
+
+    if (spinning)
+        return;
+
+
+    spinning = true;
+
+
+    initAudio();
+
+
+    const button =
+        document.getElementById(
+            "openButton"
+        );
+
+
+    const caseImage =
+        document.getElementById(
+            "caseImage"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    caseImage.classList.add(
+        "opening"
+    );
+
+
+    setTimeout(
+        () => {
+
+            caseImage.classList.remove(
+                "opening"
+            );
+
+
+            spin();
+
+        },
+        850
+    );
+
+}
+
+
+/* =========================================================
+   SPIN
+========================================================= */
+
+function spin() {
+
+    const container =
+        document.getElementById(
+            "items"
+        );
+
+
+    /*
+        Das Knife anhand des echten
+        DOM-Elements finden.
+    */
+
+    const allItems =
+        container.querySelectorAll(
+            ".item"
+        );
+
+
+    const winningItem =
+        allItems[WINNING_INDEX];
+
+
+    if (!winningItem) {
+
+        console.error(
+            "Knife konnte nicht gefunden werden."
+        );
+
+        spinning = false;
+
+        return;
+
+    }
+
+
+    /*
+        Aktuelle Position zurücksetzen.
+    */
+
+    container.style.transition =
+        "none";
+
+
+    container.style.transform =
+        "translateX(0px)";
+
+
+    /*
+        Browser zwingt zur Neuberechnung.
+    */
+
+    void container.offsetWidth;
+
+
+    /*
+        -------------------------------------------------
+        EXAKTE POSITION
+        -------------------------------------------------
+
+        Das Roulette beginnt bei left:50%.
+
+        offsetLeft gibt die tatsächliche Position
+        des Knife-Items innerhalb des Streifens an.
+
+        Wir verschieben den Streifen um exakt
+        diese Position plus die halbe Itembreite.
+    */
+
+
+    const winningCenter =
+        winningItem.offsetLeft
+        +
+        winningItem.offsetWidth / 2;
+
+
+    /*
+        Jetzt wird die Mitte des Knife-Items
+        genau auf die linke Kante des Containers
+        gelegt.
+
+        Da der Container bei 50% beginnt,
+        landet das Knife exakt in der Bildschirmmitte.
+    */
+
+    const finalPosition =
+        -winningCenter;
+
+
+    /*
+        -------------------------------------------------
+        WICHTIG:
+        Wir wollen trotzdem viele Skins
+        vorbeilaufen lassen.
+        -------------------------------------------------
+
+        Deshalb starten wir den Streifen
+        zunächst weit rechts und animieren
+        bis zur berechneten Endposition.
+    */
+
+
+    const startPosition =
+        0;
+
+
+    container.style.transform =
+        `translateX(${startPosition}px)`;
+
+
+    void container.offsetWidth;
+
+
+    /*
+        Animation
+    */
+
+    const duration =
+        9000;
+
+
+    container.style.transition =
+        `
+        transform
+        ${duration}ms
+        cubic-bezier(
+            0.04,
+            0.78,
+            0.08,
+            1
+        )
+        `;
+
+
+    container.style.transform =
+        `translateX(${finalPosition}px)`;
+
+
+    /*
+        -------------------------------------------------
+        TICK SOUNDS
+        -------------------------------------------------
+    */
+
+    let tickCount = 0;
+
+    let lastTick =
+        performance.now();
+
+
+    function animateTicks() {
+
+        if (!spinning)
+            return;
+
+
+        const elapsed =
+            performance.now()
+            -
+            lastTick;
+
+
+        const progress =
+            Math.min(
+                tickCount / 85,
+                1
+            );
+
+
+        const delay =
+            40
+            +
+            progress * 125;
+
+
+        if (
+            elapsed >= delay
+        ) {
+
+            tick(
+                Math.max(
+                    .018,
+                    .065
+                    -
+                    progress * .035
+                )
+            );
+
+
+            tickCount++;
+
+
+            lastTick =
+                performance.now();
+
+        }
+
+
+        if (
+            tickCount < 85
+        ) {
+
+            requestAnimationFrame(
+                animateTicks
+            );
+
+        }
+
+    }
+
+
+    animateTicks();
+
+
+    /*
+        -------------------------------------------------
+        ANIMATION FERTIG
+        -------------------------------------------------
+    */
+
+    setTimeout(
+        () => {
+
+            /*
+                Position noch einmal exakt setzen.
+            */
+
+            container.style.transition =
+                "none";
+
+
+            container.style.transform =
+                `translateX(${finalPosition}px)`;
+
+
+            /*
+                Sieg-Sound
+            */
+
+            victorySound();
+
+
+            /*
+                Flash
+            */
+
+            const flash =
+                document.getElementById(
+                    "flash"
+                );
+
+
+            flash.classList.remove(
+                "active"
+            );
+
+
+            void flash.offsetWidth;
+
+
+            flash.classList.add(
+                "active"
+            );
+
+
+            /*
+                Partikel
+            */
+
+            createParticles();
+
+
+            /*
+                Ergebnis
+            */
+
+            setTimeout(
+                () => {
+
+                    document
+                        .getElementById(
+                            "result"
+                        )
+                        .classList.add(
+                            "show"
+                        );
+
+                },
+                350
+            );
+
+
+            spinning = false;
+
+        },
+        duration + 200
+    );
+
+}
+
+
+/* =========================================================
+   INSPECT BUTTON
+========================================================= */
+
+document
+    .getElementById(
+        "inspect"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById(
+                    "result"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+
+            setTimeout(
+                () => {
+
+                    document
+                        .getElementById(
+                            "openButton"
+                        )
+                        .disabled =
+                        false;
+
+                },
+                700
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   START
+========================================================= */
+
+buildRoulette();
+
+
+document
+    .getElementById(
+        "openButton"
+    )
+    .addEventListener(
+        "click",
+        openCase
+    );
+
+</script>
+
+
+</body>
+
+</html>
